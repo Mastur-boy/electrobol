@@ -4,11 +4,12 @@ RUN apt-get update && apt-get install -y \
     git unzip curl libzip-dev \
     && docker-php-ext-install pdo pdo_mysql zip
 
-# 🔥 ELIMINAR TODOS LOS MPM
+# 🔥 ELIMINAR TODOS LOS MPM ACTIVOS
 RUN rm -rf /etc/apache2/mods-enabled/mpm_*
 
-# 🔥 ACTIVAR SOLO UNO
+# 🔥 ACTIVAR SOLO UNO (IMPORTANTE)
 RUN a2enmod mpm_prefork
+
 RUN a2enmod rewrite
 
 # Composer
